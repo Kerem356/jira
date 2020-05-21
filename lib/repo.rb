@@ -226,6 +226,10 @@ def git_repo(url, opts = {})
     LOGGER.info "Git fetching"
     git_repo.chdir do
       `git fetch --prune`
+      end
+    LOGGER.info "git remote prune origin"
+    git_repo.chdir do
+      'git remote prune origin'
     end
     if git_repo.is_local_branch? branch
       puts "Found pre release branch: #{branch}. Deleting local...".red

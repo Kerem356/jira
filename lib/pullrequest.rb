@@ -67,6 +67,10 @@ module JIRA
       @repo.chdir do
         `git fetch --prune`
       end
+      LOGGER.info "git remote prune origin"
+      @repo.chdir do
+        `git remote prune origin`
+      end
       LOGGER.info "Git merging"
       @repo.merge("origin/#{@pr['source']['branch']}", "merge #{@pr['source']['branch']} into #{@pr['destination']['branch']}")
       @repo
