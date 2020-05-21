@@ -61,7 +61,7 @@ module JIRA
     end
 
     def repo
-      LOGGER.info "Get repo for #{dst.full_url}"
+      LOGGER.info "PR: Get repo for #{dst.full_url}"
       @repo ||= Git.get_branch URI.decode_www_form_component(dst.full_url)
       LOGGER.info "Git fetching"
       @repo.chdir do
