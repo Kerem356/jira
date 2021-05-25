@@ -8,7 +8,7 @@ module Scenarios
     end
 
     def run
-      LOGGER.info "Starting merge_master for #{SimpleConfig.jira.issue}"
+      LOGGER.info "Starting merge_master for #{Ott::Helpers.jira_link(SimpleConfig.jira.issue)}"
       jira       = JIRA::Client.new SimpleConfig.jira.to_h
       issue      = jira.Issue.find(SimpleConfig.jira.issue)
       fail_merge = {}

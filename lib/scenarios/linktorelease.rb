@@ -21,7 +21,7 @@ module Scenarios
       filter_config = JSON.parse(ENV['RELEASE_FILTER'])
       client        = JIRA::Client.new SimpleConfig.jira.to_h
       release_issue = client.Issue.find(SimpleConfig.jira.issue)
-
+      LOGGER.info "Start work with #{Ott::Helpers.jira_link(release_issue.key)}"
       project_name         = release_issue.fields['project']['key']
       release_name         = release_issue.fields['summary'].upcase
       release_issue_number = release_issue.key

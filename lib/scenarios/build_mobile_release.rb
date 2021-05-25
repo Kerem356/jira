@@ -11,7 +11,7 @@ module Scenarios
     end
 
     def run # rubocop:disable Metrics/PerceivedComplexity, Metrics/MethodLength, Metrics/CyclomaticComplexity
-      LOGGER.info("Build mobile release from ticket #{opts[:release]}")
+      LOGGER.info("Build mobile release from ticket #{Ott::Helpers.jira_link(opts[:release])}")
 
       # Start
       options = { auth_type: :basic }.merge(opts.to_hash)

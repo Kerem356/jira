@@ -8,9 +8,9 @@ module Scenarios
     end
 
     def run # rubocop:disable Metrics/MethodLength
-      LOGGER.info "Starting freeze_release for #{SimpleConfig.jira.issue}"
       jira  = JIRA::Client.new SimpleConfig.jira.to_h
       issue = jira.Issue.find(SimpleConfig.jira.issue)
+      LOGGER.info "Starting freeze_release for #{Ott::Helpers.jira_link(issue.key)}"
       issue.post_comment <<-BODY
       {panel:title=Release notify!|borderStyle=dashed|borderColor=#ccc|titleBGColor=#E5A443|bgColor=#F1F3F1}
         Запущено формирование релизных веток(!)

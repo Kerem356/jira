@@ -6,7 +6,7 @@ module Scenarios
       LOGGER.info "Starting #{self.class.name} for #{SimpleConfig.jira.issue}"
       jira = JIRA::Client.new SimpleConfig.jira.to_h
       issue = jira.Issue.find(SimpleConfig.jira.issue)
-
+      LOGGER.info(Ott::Helpers.jira_link(issue.key).to_s)
       # Check issie status
       LOGGER.error "Issue '#{issue.key}' doesn't have 'Code review' status" unless issue.status.name == 'Code Review'
 

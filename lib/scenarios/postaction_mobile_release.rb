@@ -19,7 +19,7 @@ module Scenarios
       BODY
       is_error = false
 
-      LOGGER.info "Try to get all PR in status OPEN from #{issue.key}"
+      LOGGER.info "Try to get all PR in status OPEN from #{Ott::Helpers.jira_link(issue.key)}"
       pullrequests = issue.pullrequests(SimpleConfig.git.to_h)
                           .filter_by_status('OPEN')
                           .filter_by_source_url(SimpleConfig.jira.issue)

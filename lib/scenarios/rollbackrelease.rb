@@ -3,7 +3,7 @@ module Scenarios
   # RollbackRelease scenario
   class RollbackRelease
     def run
-      LOGGER.info "Starting RollbackRelease for #{SimpleConfig.jira.issue}"
+      LOGGER.info "Starting RollbackRelease for #{Ott::Helpers.jira_link(SimpleConfig.jira.issue)}"
       jira    = JIRA::Client.new SimpleConfig.jira.to_h
       release = jira.Issue.find(SimpleConfig.jira.issue)
       release.post_comment <<-BODY

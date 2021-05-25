@@ -9,7 +9,7 @@ module Scenarios
       # noinspection RubyArgCount
       abort('Only IOS project supports this feature') if SimpleConfig.jira.issue.include?('ADR')
       issue = jira.Issue.find(SimpleConfig.jira.issue)
-      LOGGER.info "Try to get all PR in status OPEN from #{issue.key}"
+      LOGGER.info "Try to get all PR in status OPEN from #{Ott::Helpers.jira_link(issue.key)}"
       pullrequests = issue.pullrequests(SimpleConfig.git.to_h)
                           .filter_by_status('OPEN')
                           .filter_by_source_url(SimpleConfig.jira.issue)

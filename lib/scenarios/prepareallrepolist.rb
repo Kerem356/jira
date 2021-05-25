@@ -6,7 +6,7 @@ module Scenarios
       jira = JIRA::Client.new SimpleConfig.jira.to_h
       # noinspection RubyArgCount
       issue = jira.Issue.find(SimpleConfig.jira.issue)
-      LOGGER.info("Start work with #{issue.key}")
+      LOGGER.info("Start work with #{Ott::Helpers.jira_link(issue.key)}")
       if issue.fields['issuetype']['name'].include?('Release')
         result = ""
         issue.branches.each do |branch|

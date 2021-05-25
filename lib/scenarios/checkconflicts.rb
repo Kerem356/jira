@@ -11,10 +11,11 @@ module Scenarios
     end
 
     def check_issue(issue_task)
-      LOGGER.info "Start check #{issue_task.key} issue".green
+      LOGGER.info "Start check #{Ott::Helpers.jira_link(issue_task.key)} issue".green
       is_already_reopen = false
       issue_task.api_pullrequests.each do |pr| # rubocop:disable Metrics/BlockLength
         next unless pr.state == 'OPEN'
+
         if pr.repo_slug.include?('rspec') || pr.repo_slug.include?('autotest')
           LOGGER.info 'Find autotest branch. Skip check conflict'
           next

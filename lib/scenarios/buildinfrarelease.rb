@@ -34,13 +34,13 @@ module Scenarios
       end
 
       if flag || (step_id == 1)
-        LOGGER.info "Check build status #{@opts[:release]}"
+        LOGGER.info "Check build status #{Ott::Helpers.jira_link(@opts[:release])}"
         Ott::CheckBranchesBuildStatuses.run(issue)
         flag = true
       end
 
       if flag || (step_id == 2)
-        LOGGER.info "Freeze release #{@opts[:release]}"
+        LOGGER.info "Freeze release #{Ott::Helpers.jira_link(@opts[:release])}"
         Scenarios::FreezeRelease.new.run
         LOGGER.info 'Wait while build will start'
         sleep 20
@@ -48,7 +48,7 @@ module Scenarios
       end
 
       if flag || (step_id == 3)
-        LOGGER.info "Review release #{@opts[:release]}"
+        LOGGER.info "Review release #{Ott::Helpers.jira_link(@opts[:release])}"
         Scenarios::ReviewRelease.new.run(true)
       end
 

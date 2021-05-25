@@ -9,7 +9,7 @@ module Scenarios
     end
 
     def run(is_only_one_branch = false) # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/AbcSize, Metrics/LineLength
-      LOGGER.info "Build release #{opts[:release]}"
+      LOGGER.info "Build release #{Ott::Helpers.jira_link(opts[:release])}"
 
       options = { auth_type: :basic }.merge(opts.to_hash)
       client = JIRA::Client.new(options)

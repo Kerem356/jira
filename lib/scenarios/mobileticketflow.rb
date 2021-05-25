@@ -11,7 +11,7 @@ module Scenarios
       jira = JIRA::Client.new SimpleConfig.jira.to_h
       # noinspection RubyArgCount
       issue = jira.Issue.find(SimpleConfig.jira.issue)
-      LOGGER.info("Start work with #{issue.key}")
+      LOGGER.info("Start work with #{Ott::Helpers.jira_link(issue.key)}")
       is_error = false
       is_empty = false
 

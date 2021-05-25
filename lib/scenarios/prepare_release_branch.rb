@@ -19,7 +19,7 @@ module Scenarios
     end
 
     def prepare_tests_branch(issue)
-      LOGGER.info "Try to get all release branch from ticket #{issue.key}"
+      LOGGER.info "Try to get all release branch from ticket #{Ott::Helpers.jira_link(issue.key)}"
       release_branch = ''
       issue.related['branches'].each do |branch|
         if branch['repository']['name'].include? 'avia_api_rspec' # rubocop:disable Style/Next
